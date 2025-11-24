@@ -10,6 +10,8 @@ import (
 	"strings"
 	"time"
 
+	edgexsdk "github.com/edgex-Tech/edgex-golang-sdk/sdk"
+
 	"arbitrage-bot/internal/config"
 	"arbitrage-bot/internal/exchange"
 )
@@ -18,6 +20,7 @@ type Client struct {
 	cfg        config.EdgeXConfig
 	httpClient *http.Client
 	metadata   *MetadataResponse
+	sdkClient  *edgexsdk.Client
 }
 
 // EdgeX API Response structures
@@ -60,6 +63,26 @@ func NewClient(cfg config.EdgeXConfig) *Client {
 		httpClient: &http.Client{
 			Timeout: 10 * time.Second,
 		},
+	}
+
+	// Initialize SDK client if credentials are configured
+	if cfg.APIKey != "" && cfg.SecretKey != "" {
+		// Parse account ID from API key or config
+		// For now, we'll need to add account_id to config
+		// accountID, _ := strconv.ParseInt(cfg.AccountID, 10, 64)
+
+		// TODO: Initialize EdgeX SDK client
+		// sdkClient, err := edgexsdk.NewClient(
+		// 	edgexsdk.WithBaseURL(cfg.BaseURL),
+		// 	edgexsdk.WithAccountID(accountID),
+		// 	edgexsdk.WithStarkPrivateKey(cfg.SecretKey),
+		// )
+		// if err != nil {
+		// 	fmt.Printf("Warning: Failed to create EdgeX SDK client: %v\n", err)
+		// } else {
+		// 	client.sdkClient = sdkClient
+		// 	fmt.Println("EdgeX SDK client initialized successfully")
+		// }
 	}
 
 	// Fetch metadata on initialization
@@ -244,17 +267,46 @@ func (c *Client) GetPrice(symbol string) (float64, error) {
 }
 
 func (c *Client) GetBalance(asset string) (float64, error) {
-	return 0, fmt.Errorf("not implemented - requires authentication")
+	if c.sdkClient == nil {
+		return 0, fmt.Errorf("SDK client not initialized - requires authentication")
+	}
+
+	// TODO: Use SDK to get balance
+	// assets, err := c.sdkClient.Asset.GetAccountAsset(context.Background())
+	return 0, fmt.Errorf("not implemented - requires SDK integration")
 }
 
 func (c *Client) GetPosition(symbol string) (*exchange.Position, error) {
-	return nil, fmt.Errorf("not implemented - requires authentication")
+	if c.sdkClient == nil {
+		return nil, fmt.Errorf("SDK client not initialized - requires authentication")
+	}
+
+	// TODO: Use SDK to get position
+	// positions, err := c.sdkClient.Account.GetAccountPosition(context.Background())
+	return nil, fmt.Errorf("not implemented - requires SDK integration")
 }
 
 func (c *Client) PlaceOrder(req *exchange.OrderRequest) (*exchange.OrderResponse, error) {
-	return nil, fmt.Errorf("not implemented - requires authentication")
+	if c.sdkClient == nil {
+		return nil, fmt.Errorf("SDK client not initialized - check api_key and secret_key configuration")
+	}
+
+	// TODO: Implement using EdgeX SDK
+	// The SDK provides client.Order.CreateOrder() method
+	// Need to:
+	// 1. Convert symbol to contract ID
+	// 2. Convert order parameters to SDK format
+	// 3. Call SDK's CreateOrder method
+
+	return nil, fmt.Errorf("EdgeX下单功能需要配置 account_id 和 stark_private_key,详见文档")
 }
 
 func (c *Client) CancelOrder(symbol, orderID string) error {
-	return fmt.Errorf("not implemented - requires authentication")
+	if c.sdkClient == nil {
+		return fmt.Errorf("SDK client not initialized")
+	}
+
+	// TODO: Use SDK to cancel order
+	// err := c.sdkClient.Order.CancelOrder(context.Background(), orderID)
+	return fmt.Errorf("not implemented - requires SDK integration")
 }

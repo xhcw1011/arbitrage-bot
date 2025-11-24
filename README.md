@@ -60,9 +60,11 @@ go run cmd/test_ws/main.go
   - 📖 详见 `docs/APIKey配置说明.md`
 - **下单功能**: 
   - ✅ Hyperliquid: 完整实现,可通过 `config.yaml` 中的 `execute_trades` 开关控制。
-  - ⚠️ Lighter: 需要 C 签名库,复杂度高,建议手动对冲或等待后续实现。
+  - ✅ Lighter: **已完成!** 使用官方 SDK,需配置 `api_key` 和 `private_key`。详见 `docs/Lighter下单功能说明.md`
   - ⚠️ EdgeX: 需要 StarkEx L2 签名,复杂度极高,建议手动对冲。
-- **推荐方案**: 使用 Hyperliquid 自动下单,Lighter/EdgeX 手动对冲或仅用于监控。
+- **推荐方案**: 
+  - 方案 A: Hyperliquid + Lighter 双交易所自动化
+  - 方案 B: 仅 Hyperliquid 自动化,其他手动对冲
 
 ## 相关文档
 - `docs/API对接总结.md` - API 对接详细说明

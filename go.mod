@@ -3,6 +3,8 @@ module arbitrage-bot
 go 1.25.0
 
 require (
+	github.com/edgex-Tech/edgex-golang-sdk v0.0.0-20251110062431-5d2e7351fde1
+	github.com/elliottech/lighter-go v0.0.0-20251121115459-d951267dd222
 	github.com/ethereum/go-ethereum v1.16.7
 	github.com/gorilla/websocket v1.5.3
 	github.com/sonirico/go-hyperliquid v0.24.0
@@ -19,10 +21,12 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0 // indirect
 	github.com/elastic/go-sysinfo v1.15.4 // indirect
 	github.com/elastic/go-windows v1.0.2 // indirect
+	github.com/elliottech/poseidon_crypto v0.0.11 // indirect
 	github.com/ethereum/c-kzg-4844/v2 v2.1.5 // indirect
 	github.com/ethereum/go-verkle v0.2.2 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
@@ -34,6 +38,7 @@ require (
 	github.com/prometheus/procfs v0.17.0 // indirect
 	github.com/rs/zerolog v1.34.0 // indirect
 	github.com/sagikazarmark/locafero v0.11.0 // indirect
+	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/sonirico/vago v0.9.0 // indirect
 	github.com/sonirico/vago/lol v0.0.0-20250901170347-2d1d82c510bd // indirect
 	github.com/sourcegraph/conc v0.3.1-0.20240121214520-5f936abd7ae8 // indirect

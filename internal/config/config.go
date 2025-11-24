@@ -39,9 +39,11 @@ type LighterConfig struct {
 }
 
 type EdgeXConfig struct {
-	BaseURL   string `mapstructure:"base_url"`
-	APIKey    string `mapstructure:"api_key"`
-	SecretKey string `mapstructure:"secret_key"`
+	BaseURL         string `mapstructure:"base_url"`
+	APIKey          string `mapstructure:"api_key"`
+	SecretKey       string `mapstructure:"secret_key"`
+	AccountID       string `mapstructure:"account_id"`
+	StarkPrivateKey string `mapstructure:"stark_private_key"`
 }
 
 type StrategiesConfig struct {

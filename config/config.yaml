@@ -17,6 +17,8 @@ exchanges:
     base_url: "https://pro.edgex.exchange"
     api_key: ""
     secret_key: ""
+    account_id: ""           # EdgeX Account ID
+    stark_private_key: ""    # StarkEx L2 Private Key
 
 strategies:
   funding_arb:
