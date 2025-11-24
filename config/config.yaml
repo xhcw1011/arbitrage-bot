@@ -1,0 +1,32 @@
+app:
+  log_level: "info"
+  port: 8080
+
+exchanges:
+  hyperliquid:
+    base_url: "https://api.hyperliquid.xyz"
+    api_key: ""
+    secret_key: ""
+    wallet_address: ""
+    private_key: ""
+  lighter:
+    base_url: "https://mainnet.zklighter.elliot.ai"
+    api_key: ""        # Lighter API Key (用于鉴权)
+    private_key: ""    # 用于签名交易
+  edgex:
+    base_url: "https://pro.edgex.exchange"
+    api_key: ""
+    secret_key: ""
+
+strategies:
+  funding_arb:
+    enabled: true
+    pairs: ["ETH-USD", "BTC-USD"]
+    min_funding_diff: 0.001 # 0.1%
+    leverage: 2.0
+    check_interval_ms: 1000
+    execute_trades: false
+  xp_farming:
+    enabled: true
+    target_volume_daily: 10000
+    max_slippage: 0.0005
